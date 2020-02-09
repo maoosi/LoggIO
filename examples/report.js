@@ -1,7 +1,7 @@
 import LoggIO from '../src/index.js'
 import path from 'path'
 
-// instanciate using `Apache Combined Log` format
+// instantiate using `Apache Combined Log` format
 const loggIO = new LoggIO({ format: 'APACHE_COMBINED' })
 
 // read .log file content

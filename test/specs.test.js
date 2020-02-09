@@ -10,10 +10,10 @@ beforeEach(() => {
 describe('Parser API', () => {
 
     describe('new LoggIO()', () => {
-        test('instanciate with correct parameters', () => {
+        test('instantiate with correct parameters', () => {
             expect(new LoggIO({ format: 'APACHE_COMBINED' })).toBeInstanceOf(LoggIO)
         })
-        test('instanciate with wrong parameters should throw error', () => {
+        test('instantiate with wrong parameters should throw error', () => {
             expect(() => new LoggIO({ format: 'NON_EXISTING' })).toThrow()
         })
     })

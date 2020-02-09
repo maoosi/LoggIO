@@ -27,7 +27,7 @@ yarn report
 // import library
 import LoggIO from './path-to-loggio'
 
-// instanciate using Apache Combined Log format
+// instantiate using Apache Combined Log format
 const loggIO = new LoggIO({ format: 'APACHE_COMBINED' })
 
 // parse new logs from .log file
