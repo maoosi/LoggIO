@@ -11,7 +11,7 @@ export default class {
         if (!['APACHE_COMBINED'].includes(format))
             throw new Error(`Format '${format}' is not supported.`)
 
-        // class variable
+        // class variables
         this.format = format
         this.logs = []
         this.results = false
