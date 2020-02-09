@@ -1,0 +1,23 @@
+{
+    "name": "loggio",
+    "version": "1.0.0",
+    "main": "src/index.js",
+    "license": "MIT",
+    "scripts": {
+        "test": "jest",
+        "report": "npx babel-node examples/report.js"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.8.4",
+        "@babel/node": "^7.8.4",
+        "@babel/preset-env": "^7.8.4",
+        "babel-jest": "^25.1.0",
+        "jest": "^25.1.0"
+    },
+    "engines": {
+        "node": ">=12"
+    },
+    "dependencies": {
+        "mitt": "^1.2.0"
+    }
+}
