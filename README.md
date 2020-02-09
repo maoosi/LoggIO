@@ -28,22 +28,23 @@ yarn report
 import LoggIO from './path-to-loggio'
 
 // instanciate using Apache Combined Log format
-// output = { ip, userId, time, method, referer, protocol, statusCode, size, userAgent }
 const loggIO = new LoggIO({ format: 'APACHE_COMBINED' })
 
 // parse new logs from .log file
-const stream = loggIO.read('./data.log')
+loggIO.read('./data.log')
 
-// new data stream event
-stream.on('data', (chunk) => {
-	// output number of unique ip addresses from logs
-    chunk.query().unique('ip').count()
+// perform operation after data is parsed
+loggIO.on('data', (data) => {
+
+    // output number of unique ip addresses from logs
+    data.query().unique('ip').count()
 
     // output top 3 most visited urls from logs
-    chunk.query().sort('referer').unique('referer').limit(3).toJson()
+    data.query().sort('referer').unique('referer').limit(3).toJson()
 
     // output top 3 most active ip addresses from logs
-    chunk.query().sort('ip').unique('ip').limit(3).toJson()
+    data.query().sort('ip').unique('ip').limit(3).toJson()
+
 })
 ```
 
@@ -53,13 +54,13 @@ stream.on('data', (chunk) => {
 /* Parser API */
 .read(filepath)            // Read log file from `filepath`
 
-/* Events listeners */
-.on('data', data => {})   // after each data chunk is parsed
+/* Events */
+.on('data', data => {})   // Event subscriber, triggered after each data chunk parsed
 
-/* Chainable stream data API */
+/* Chainable data stream API */
 .query()                  // Perform query on parsed logs (also act as query reset)
 .unique([key])            // Filter logs by unique occurences of `key` value
-.limit(max)               // Limit results starting from the first until `max` element
+.limit([max])             // Limit results starting from the first until `max` element
 .sort(key)                // Sort logs by occurences frequency of `key` value
 .toJson()                 // Output results in JSON (not chainable)
 .count()                  // Output results count (not chainable)
